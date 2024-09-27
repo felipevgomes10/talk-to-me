@@ -55,6 +55,8 @@ async function handleSpeechButtonClick(speechButton, stopSpeechButton) {
   };
 
   speech.instance.onend = () => {
+    cleanClipboard();
+
     speechButton.innerText = TEXTS.MAIN;
     speechButton.disabled = false;
     stopSpeechButton.disabled = true;
@@ -65,10 +67,15 @@ async function handleSpeechButtonClick(speechButton, stopSpeechButton) {
 
 function handleStopSpeechButtonClick(speechButton, stopSpeechButton) {
   window.speechSynthesis.cancel();
+  cleanClipboard();
 
   speechButton.innerText = TEXTS.MAIN;
   speechButton.disabled = false;
   stopSpeechButton.disabled = true;
+}
+
+async function cleanClipboard() {
+  await navigator.clipboard.writeText("");
 }
 
 async function getText() {
