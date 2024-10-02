@@ -37,7 +37,6 @@ function createSpeechButtons() {
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && event.metaKey) {
-      console.log("Enter + CMD");
       handleSpeechButtonClick(speechButton, stopSpeechButton);
     }
   });
