@@ -35,6 +35,19 @@ function createSpeechButtons() {
     handleStopSpeechButtonClick.bind(null, speechButton, stopSpeechButton)
   );
 
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && event.metaKey) {
+      console.log("Enter + CMD");
+      handleSpeechButtonClick(speechButton, stopSpeechButton);
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      handleStopSpeechButtonClick(speechButton, stopSpeechButton);
+    }
+  });
+
   wrapper.appendChild(speechButton);
   wrapper.appendChild(stopSpeechButton);
 
